@@ -8,6 +8,7 @@ import com.eshop.eshop.service.ProductService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 
@@ -34,16 +35,30 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductResponse> getProducts(Pageable pageable) {
+    public Page<ProductResponse> getProducts(Pageable pageable, Integer brandId, Integer typeId, String keyword) {
         log.info("Fetching Products!!!");
-        // Fetch Products with pagination directly from repository
-        Page<Product> productsPage = productRepository.findAll(pageable);
 
-        // Map Product -> ProductResponse using Page.map()
-        Page<ProductResponse> productResponses = productsPage.map(this::convertToProductResponse);
+        Specification<Product> spec = null;
 
-        log.info("Fetched Products!!!");
-        return productResponses;
+        if (brandId != null) {
+            Specification<Product> brandSpec = (root, query, cb) -> cb.equal(root.get("brand").get("id"), brandId);
+            spec = (spec == null) ? brandSpec : spec.and(brandSpec);
+        }
+
+        if (typeId != null) {
+            Specification<Product> typeSpec = (root, query, cb) -> cb.equal(root.get("type").get("id"), typeId);
+            spec = (spec == null) ? typeSpec : spec.and(typeSpec);
+        }
+
+        if (keyword != null && !keyword.isEmpty()) {
+            Specification<Product> keywordSpec = (root, query, cb) ->
+                    cb.like(cb.lower(root.get("name")), "%" + keyword.toLowerCase() + "%");
+            spec = (spec == null) ? keywordSpec : spec.and(keywordSpec);
+        }
+
+        log.info("Fetching All Products!!!");
+        return productRepository.findAll(spec, pageable)
+                .map(this::convertToProductResponse);
     }
 
 
