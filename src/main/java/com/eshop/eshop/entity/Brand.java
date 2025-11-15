@@ -23,5 +23,8 @@ public class Brand {
 
     @Column(name = "Name")
     private String name;
+
+    @OneToMany(mappedBy = "brand", fetch = FetchType.LAZY)
+    private List<Product> prodcts;
     
 }

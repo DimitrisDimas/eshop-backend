@@ -31,4 +31,11 @@ public class Product {
     private String pictureUrl;
 
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="ProductBrandId", referencedColumnName = "Id")
+    private Brand brand;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="ProductTypeId", referencedColumnName = "Id")
+    private Type type;
+
 }
