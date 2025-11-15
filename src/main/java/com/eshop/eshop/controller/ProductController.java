@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("v1/api/products")
 @Tag(name = "Product", description = "Endpoints for Managing Product")
 public class ProductController implements ProductControllerDocs {
     private final ProductService productService;
