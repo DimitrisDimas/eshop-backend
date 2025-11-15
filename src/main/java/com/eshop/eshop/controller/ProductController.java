@@ -1,11 +1,13 @@
 package com.eshop.eshop.controller;
 
+import com.eshop.eshop.controller.docs.ProductControllerDocs;
 import com.eshop.eshop.dto.BrandResponse;
 import com.eshop.eshop.dto.ProductResponse;
 import com.eshop.eshop.dto.TypeResponse;
 import com.eshop.eshop.service.BrandService;
 import com.eshop.eshop.service.ProductService;
 import com.eshop.eshop.service.TypeService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -18,7 +20,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
-public class ProductController {
+@Tag(name = "Product", description = "Endpoints for Managing Product")
+public class ProductController implements ProductControllerDocs {
     private final ProductService productService;
     private final BrandService brandService;
     private final TypeService typeService;
