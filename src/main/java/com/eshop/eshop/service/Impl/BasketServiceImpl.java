@@ -57,7 +57,10 @@ public class BasketServiceImpl implements BasketService {
 
     @Override
     public BasketResponse createBasket(Basket basket) {
-        return null;
+        log.info("Creating Basket");
+        Basket savedBasket = basketRepository.save(basket);
+        log.info("Basket created with Id: {}", savedBasket.getId());
+        return convertToBasketResponse(savedBasket);
     }
 
 
