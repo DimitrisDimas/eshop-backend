@@ -1,9 +1,10 @@
 package com.eshop.eshop.Repository;
 
 
+import com.eshop.eshop.entity.order.Order;
 import com.eshop.eshop.entity.order.OrderStatus;
 import io.lettuce.core.dynamic.annotation.Param;
-import jakarta.persistence.criteria.Order;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
