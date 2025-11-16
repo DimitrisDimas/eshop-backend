@@ -2,10 +2,7 @@ package com.eshop.eshop.controller;
 
 import com.eshop.eshop.dto.BasketResponse;
 import com.eshop.eshop.service.BasketService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,6 +24,11 @@ public class BasketController {
     @GetMapping("/{basketId}")
     public BasketResponse getBasketById(@PathVariable String basketId){
         return basketService.getBasketById(basketId);
+    }
+
+    @DeleteMapping("/{basketId}")
+    public void deleteBasketById(@PathVariable String basketId){
+        basketService.deleteBasketById(basketId);
     }
 
 }
