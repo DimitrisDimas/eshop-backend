@@ -1,3 +1,4 @@
+package com.eshop.eshop.entity;
 
 import jakarta.persistence.Id;
 import lombok.Data;
