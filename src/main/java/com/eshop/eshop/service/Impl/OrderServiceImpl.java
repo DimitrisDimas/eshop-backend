@@ -6,6 +6,7 @@ import com.eshop.eshop.Repository.BrandRepository;
 import com.eshop.eshop.Repository.OrderRepository;
 import com.eshop.eshop.Repository.TypeRepository;
 import com.eshop.eshop.dto.basketDto.BasketItemResponse;
+import com.eshop.eshop.dto.basketDto.BasketResponse;
 import com.eshop.eshop.dto.orderDto.OrderDto;
 import com.eshop.eshop.dto.orderDto.OrderResponse;
 import com.eshop.eshop.entity.order.Order;
@@ -60,8 +61,32 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Integer createOrder(OrderDto order) {
-        return 0;
+    public Integer createOrder(OrderDto orderDto) {
+        //Fetching Basket details
+        BasketResponse basketResponse = basketService.getBasketById(orderDto.getBasketId());
+        if(basketResponse == null){
+            log.error("Basket with ID {} not found", orderDto.getBasketId());
+            return null;
+        }
+        //Map basket items to order items
+        List<OrderItem> orderItems = basketResponse.getItems().stream()
+                .map(this::mapBasketItemToOrderItem)
+                .collect(Collectors.toList());
+
+        //calculate subtotal
+        double subTotal = basketResponse.getItems().stream()
+                .mapToDouble(item -> item.getPrice() * item.getQuantity())
+                .sum();
+        //set order details
+        Order order = orderMapper.orderResponseToOrder(orderDto);
+        order.setOrderItems(orderItems);
+        order.setSubTotal(subTotal);
+
+        //save the order
+        Order savedOrder = orderRepository.save(order);
+        basketService.deleteBasketById(orderDto.getBasketId());
+        //return the response
+        return savedOrder.getId();
     }
 
     @Override
