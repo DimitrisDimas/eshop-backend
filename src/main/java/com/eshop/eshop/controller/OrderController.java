@@ -1,7 +1,10 @@
 package com.eshop.eshop.controller;
 
+import com.eshop.eshop.dto.orderDto.OrderDto;
 import com.eshop.eshop.dto.orderDto.OrderResponse;
 import com.eshop.eshop.service.OrderService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,5 +43,17 @@ public class OrderController {
         orderService.deleteOrder(orderId);
         return ResponseEntity.noContent().build();
     }
+
+
+    @PostMapping
+    public ResponseEntity<Integer> createOrder(@Valid @RequestBody OrderDto orderDto){
+        Integer orderId = orderService.createOrder(orderDto);
+        if(orderId!=null){
+            return ResponseEntity.status(HttpStatus.CREATED).body(orderId);
+        }else{
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 
 }
