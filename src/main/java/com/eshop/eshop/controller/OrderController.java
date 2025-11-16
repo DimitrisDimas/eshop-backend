@@ -4,6 +4,8 @@ import com.eshop.eshop.dto.orderDto.OrderDto;
 import com.eshop.eshop.dto.orderDto.OrderResponse;
 import com.eshop.eshop.service.OrderService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,6 +55,13 @@ public class OrderController {
         }else{
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+    }
+
+
+    @GetMapping("/paged")
+    public ResponseEntity<Page<OrderResponse>> getAllOrdersPaged(Pageable pageable){
+        Page<OrderResponse> orders = orderService.getAllOrders(pageable);
+        return ResponseEntity.ok(orders);
     }
 
 
