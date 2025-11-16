@@ -1,9 +1,9 @@
 package com.eshop.eshop.entity.order;
 
-import com.eshop.eshop.entity.order.ProductItemOrder;
+
 import jakarta.persistence.*;
 
-import jakarta.persistence.criteria.Order;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
