@@ -17,5 +17,10 @@ public class BasketController {
     public BasketController(BasketService basketService) {
         this.basketService = basketService;
     }
-    
+
+    @GetMapping
+    public List<BasketResponse> getAllBaskets() {
+        return basketService.getAllBaskets();
+    }
+
 }
