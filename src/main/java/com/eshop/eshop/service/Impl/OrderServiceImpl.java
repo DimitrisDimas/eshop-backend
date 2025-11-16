@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -49,7 +50,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderResponse> getAllOrders() {
-        return List.of();
+        List<Order> orders = orderRepository.findAll();
+        return orders.stream().map(orderMapper::OrderToOrderResponse).collect(Collectors.toList());
     }
 
     @Override
