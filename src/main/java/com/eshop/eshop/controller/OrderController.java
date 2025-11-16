@@ -3,10 +3,7 @@ package com.eshop.eshop.controller;
 import com.eshop.eshop.dto.orderDto.OrderResponse;
 import com.eshop.eshop.service.OrderService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -37,5 +34,11 @@ public class OrderController {
         return ResponseEntity.ok(orders);
     }
 
+
+    @DeleteMapping("/{orderId}")
+    public ResponseEntity<Void> deleteOrder(@PathVariable Integer orderId){
+        orderService.deleteOrder(orderId);
+        return ResponseEntity.noContent().build();
+    }
 
 }
