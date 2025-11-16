@@ -1,10 +1,10 @@
 package com.eshop.eshop.controller;
 
 import com.eshop.eshop.controller.docs.BasketControllerDocs;
-import com.eshop.eshop.dto.BasketItemResponse;
-import com.eshop.eshop.dto.BasketResponse;
-import com.eshop.eshop.entity.Basket;
-import com.eshop.eshop.entity.BasketItem;
+import com.eshop.eshop.dto.basketDto.BasketItemResponse;
+import com.eshop.eshop.dto.basketDto.BasketResponse;
+import com.eshop.eshop.entity.basket.Basket;
+import com.eshop.eshop.entity.basket.BasketItem;
 import com.eshop.eshop.service.BasketService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;

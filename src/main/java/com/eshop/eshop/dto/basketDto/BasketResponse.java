@@ -1,4 +1,4 @@
-package com.eshop.eshop.dto;
+package com.eshop.eshop.dto.basketDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

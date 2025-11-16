@@ -1,7 +1,7 @@
 package com.eshop.eshop.service;
 
-import com.eshop.eshop.dto.BasketResponse;
-import com.eshop.eshop.entity.Basket;
+import com.eshop.eshop.dto.basketDto.BasketResponse;
+import com.eshop.eshop.entity.basket.Basket;
 
 import java.util.List;
 
