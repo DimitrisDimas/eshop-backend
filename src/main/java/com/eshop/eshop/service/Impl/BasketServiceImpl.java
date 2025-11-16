@@ -23,7 +23,14 @@ public class BasketServiceImpl implements BasketService {
     }
     @Override
     public List<BasketResponse> getAllBaskets() {
-        return null;
+        log.info("Fetching All Baskets");
+        List<Basket> basketList = (List<Basket>) basketRepository.findAll();
+        //now we will use stream operator to map with response
+        List<BasketResponse> basketResponses = basketList.stream()
+                .map(this::convertToBasketResponse)
+                .collect(Collectors.toList());
+        log.info("Fetched all Baskets");
+        return basketResponses;
     }
 
     @Override
