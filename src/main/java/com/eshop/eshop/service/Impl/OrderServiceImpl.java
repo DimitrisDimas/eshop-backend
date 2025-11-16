@@ -56,7 +56,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Page<OrderResponse> getAllOrders(Pageable pageable) {
-        return null;
+        return orderRepository.findAll(pageable).map(orderMapper::OrderToOrderResponse);
     }
 
     @Override
