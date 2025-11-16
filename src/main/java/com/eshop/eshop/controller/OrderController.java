@@ -1,8 +1,10 @@
 package com.eshop.eshop.controller;
 
+import com.eshop.eshop.controller.docs.OrderControllerDocs;
 import com.eshop.eshop.dto.orderDto.OrderDto;
 import com.eshop.eshop.dto.orderDto.OrderResponse;
 import com.eshop.eshop.service.OrderService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,7 +16,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/orders")
-public class OrderController {
+@Tag(name = "Order", description = "Endpoints for Managing Orders")
+public class OrderController implements OrderControllerDocs {
 
     private final OrderService orderService;
 
