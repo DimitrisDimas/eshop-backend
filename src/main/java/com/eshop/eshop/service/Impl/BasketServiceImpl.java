@@ -1,10 +1,10 @@
 package com.eshop.eshop.service.Impl;
 
 import com.eshop.eshop.Repository.BasketRepository;
-import com.eshop.eshop.dto.BasketItemResponse;
-import com.eshop.eshop.dto.BasketResponse;
-import com.eshop.eshop.entity.Basket;
-import com.eshop.eshop.entity.BasketItem;
+import com.eshop.eshop.dto.basketDto.BasketItemResponse;
+import com.eshop.eshop.dto.basketDto.BasketResponse;
+import com.eshop.eshop.entity.basket.Basket;
+import com.eshop.eshop.entity.basket.BasketItem;
 import com.eshop.eshop.service.BasketService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;

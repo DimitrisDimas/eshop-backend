@@ -1,6 +1,6 @@
 package com.eshop.eshop.controller.docs;
 
-import com.eshop.eshop.dto.BasketResponse;
+import com.eshop.eshop.dto.basketDto.BasketResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
