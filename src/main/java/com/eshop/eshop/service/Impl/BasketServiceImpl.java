@@ -10,6 +10,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,7 +36,16 @@ public class BasketServiceImpl implements BasketService {
 
     @Override
     public BasketResponse getBasketById(String basketId) {
-        return null;
+        log.info("Fetching Basket by Id: {}", basketId);
+        Optional<Basket> basketOptional = basketRepository.findById(basketId);
+        if(basketOptional.isPresent()){
+            Basket basket = basketOptional.get();
+            log.info("Fetched Basket by Id: {}", basketId);
+            return convertToBasketResponse(basket);
+        }else{
+            log.info("Basket with Id: {} not found", basketId);
+            return null;
+        }
     }
 
     @Override
