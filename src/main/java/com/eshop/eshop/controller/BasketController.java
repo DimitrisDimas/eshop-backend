@@ -1,10 +1,12 @@
 package com.eshop.eshop.controller;
 
+import com.eshop.eshop.controller.docs.BasketControllerDocs;
 import com.eshop.eshop.dto.BasketItemResponse;
 import com.eshop.eshop.dto.BasketResponse;
 import com.eshop.eshop.entity.Basket;
 import com.eshop.eshop.entity.BasketItem;
 import com.eshop.eshop.service.BasketService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +16,8 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/baskets")
-public class BasketController {
+@Tag(name = "Basket", description = "Endpoints for Managing Basket")
+public class BasketController implements BasketControllerDocs {
 
     private final BasketService basketService;
 
