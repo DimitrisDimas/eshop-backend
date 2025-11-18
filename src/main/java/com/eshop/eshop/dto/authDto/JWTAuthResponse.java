@@ -18,7 +18,5 @@ public class JWTAuthResponse {
     @Size(min = 5, message = "Username should have at least 5 characters")
     @Schema(description = "Login Username")
     private String username;
-    private String accessToken;
-    private String tokenType ="Bearer";
-
+    private String token;
 }
