@@ -16,11 +16,6 @@ import lombok.Setter;
 
 public class RegisterDto {
 
-    @NotEmpty
-    @Size(min = 5, message = "Name should have at least 5 characters")
-    @Schema(description = "Blog Register Name")
-
-    private String name;
 
     @NotEmpty
     @Size(min = 5, message = "Username should have at least 5 characters")
