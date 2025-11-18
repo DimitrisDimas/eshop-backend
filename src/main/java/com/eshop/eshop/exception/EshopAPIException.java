@@ -1,0 +1,37 @@
+package com.eshop.eshop.exception;
+
+import org.springframework.http.HttpStatus;
+
+public class EshopAPIException extends RuntimeException{
+
+    private HttpStatus status;
+    private String message;
+
+    public EshopAPIException(HttpStatus status, String message) {
+        this.status = status;
+        this.message = message;
+    }
+
+    public EshopAPIException(String message, HttpStatus status, String message1) {
+        super(message);
+        this.status = status;
+        this.message = message1;
+    }
+
+    public HttpStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(HttpStatus status) {
+        this.status = status;
+    }
+
+    @Override
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+}

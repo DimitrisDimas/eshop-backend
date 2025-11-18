@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   datasource:
@@ -23,3 +23,7 @@ spring:
     redis:
       host: localhost
       port: 6379
+
+app:
+  jwt-secret: 8d73e794b3bc64304d161293a70ba7eec4c4acd3a71a3d9b9fd2f72c66b4078e
+  jwt-expiration-milliseconds: 604800000

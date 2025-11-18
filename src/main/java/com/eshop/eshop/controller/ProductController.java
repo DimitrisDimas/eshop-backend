@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("v1/api/products")
+@RequestMapping("/api/products")
 @Tag(name = "Product", description = "Endpoints for Managing Product")
 public class ProductController implements ProductControllerDocs {
     private final ProductService productService;
@@ -52,7 +52,7 @@ public class ProductController implements ProductControllerDocs {
 
         Sort.Direction direction = order.equalsIgnoreCase("desc") ? Sort.Direction.DESC: Sort.Direction.ASC;
         Sort sorting = Sort.by(direction, sort);
-        Pageable pageable = PageRequest.of(page,size);
+        Pageable pageable = PageRequest.of(page,size,sorting);
         Page<ProductResponse> productResponses = productService.getProducts(pageable, brandId, typeId, keyword);
         return new ResponseEntity<>(productResponses, HttpStatus.OK);
     }
