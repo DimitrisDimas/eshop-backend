@@ -34,11 +34,12 @@ public class AuthController implements AuthControllerDocs {
     }
 
 
-    @PostMapping(value = {"/login","/signin"})
+    @PostMapping(value = {"/login"})
     public ResponseEntity<JWTAuthResponse> login(@Valid @RequestBody LoginDto loginDto){
         String token = authService.login(loginDto);
 
         JWTAuthResponse jwtAuthResponse = new JWTAuthResponse();
+        jwtAuthResponse.setUsername(loginDto.getUsername());
         jwtAuthResponse.setAccessToken(token);
         return ResponseEntity.ok(jwtAuthResponse);
     }
