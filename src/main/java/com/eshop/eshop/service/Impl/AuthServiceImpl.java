@@ -46,7 +46,6 @@ public class AuthServiceImpl implements AuthService {
 
         //TODO REFACTOR (MODEL MAPPER)
         User user = new User();
-        user.setName(registerDto.getName());
         user.setUsername(registerDto.getUsername());
         user.setEmail(registerDto.getEmail());
         user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
@@ -64,7 +63,7 @@ public class AuthServiceImpl implements AuthService {
     public String login(LoginDto loginDto) {
 
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                loginDto.getUsernameOrEmail(),loginDto.getPassword()));
+                loginDto.getUsername(),loginDto.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
