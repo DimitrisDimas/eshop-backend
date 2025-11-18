@@ -16,9 +16,9 @@ import lombok.Setter;
 public class LoginDto {
 
     @NotEmpty
-    @Size(min = 5, message = "Username or email should have at least 5 characters")
-    @Schema(description = "Login Username or Email")
-    private String usernameOrEmail;
+    @Size(min = 5, message = "Username should have at least 5 characters")
+    @Schema(description = "Login Username")
+    private String username;
     @NotEmpty
     @Schema(description = "Login Password")
     @Size(min = 5, message = "Password should have at least 5 characters")
