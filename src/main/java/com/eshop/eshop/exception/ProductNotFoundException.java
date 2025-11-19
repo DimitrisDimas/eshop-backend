@@ -11,8 +11,7 @@ public class ProductNotFoundException extends RuntimeException{
     private long fieldValue;
 
     public ProductNotFoundException(String resourceName, String fieldName, long fieldValue) {
-        //Example 1 -> Post not found with id : 1
-        //Example 2 -> Comment not found with id : 1 etc
+
         super(String.format("%s not found with %s : '%s'",resourceName,fieldName,fieldValue));
         this.resourceName = resourceName;
         this.fieldValue = fieldValue;

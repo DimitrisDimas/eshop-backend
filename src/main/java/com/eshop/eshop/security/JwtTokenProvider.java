@@ -1,6 +1,5 @@
 package com.eshop.eshop.security;
 
-import com.eshop.eshop.EshopApplication;
 import com.eshop.eshop.exception.EshopAPIException;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -25,7 +24,6 @@ public class JwtTokenProvider {
     @Value("${app.jwt-expiration-milliseconds}")
     private long jwtExpirationDate;
 
-    //generate JWT token
 
     public String generateToken(Authentication authentication){
         String username = authentication.getName();
@@ -48,7 +46,6 @@ public class JwtTokenProvider {
         return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
     }
 
-    //get username from JWT token
     public String getUsername(String token){
         return Jwts.parser()
                 .verifyWith((SecretKey) key())

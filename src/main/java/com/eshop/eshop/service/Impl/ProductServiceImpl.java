@@ -28,7 +28,6 @@ public class ProductServiceImpl implements ProductService {
         log.info("fetching Product by Id: {}", productId);
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new ProductNotFoundException("Category", "id", productId));
-        //now convert the Product to Product Response
         ProductResponse productResponse = convertToProductResponse(product);
         log.info("Fetched Product by Product Id: {}", productId);
         return productResponse;

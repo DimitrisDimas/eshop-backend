@@ -43,11 +43,8 @@ public class BasketController implements BasketControllerDocs {
 
     @PostMapping
     public ResponseEntity<BasketResponse> createBasket(@RequestBody BasketResponse basketResponse){
-        //convert this basket response to basket entity
         Basket basket = convertToBasketEntity(basketResponse);
-        //call the service method to create the basket
         BasketResponse createdBasket = basketService.createBasket(basket);
-        //Return the Created Basket
         return new ResponseEntity<>(createdBasket, HttpStatus.CREATED);
     }
 

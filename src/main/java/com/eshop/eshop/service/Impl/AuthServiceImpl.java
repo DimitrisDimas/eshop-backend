@@ -44,7 +44,6 @@ public class AuthServiceImpl implements AuthService {
     public String register(RegisterDto registerDto) {
 
 
-        //TODO REFACTOR (MODEL MAPPER)
         User user = new User();
         user.setUsername(registerDto.getUsername());
         user.setEmail(registerDto.getEmail());

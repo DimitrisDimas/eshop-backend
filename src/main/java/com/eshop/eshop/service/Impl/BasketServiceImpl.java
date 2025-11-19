@@ -26,7 +26,6 @@ public class BasketServiceImpl implements BasketService {
     public List<BasketResponse> getAllBaskets() {
         log.info("Fetching All Baskets");
         List<Basket> basketList = (List<Basket>) basketRepository.findAll();
-        //now we will use stream operator to map with response
         List<BasketResponse> basketResponses = basketList.stream()
                 .map(this::convertToBasketResponse)
                 .collect(Collectors.toList());
